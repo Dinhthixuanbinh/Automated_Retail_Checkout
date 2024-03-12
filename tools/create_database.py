@@ -1,8 +1,8 @@
 from tools.get_embedding import Img2Vec
 from PIL import Image
 from tqdm import tqdm
-import faiss
 import pandas as pd
+import faiss
 import os
 
 
