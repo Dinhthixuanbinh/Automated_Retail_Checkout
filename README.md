@@ -26,7 +26,7 @@ Install build requirements.
  pip install -r requirements
  ```
 ## Data preparation
-1. Download datasets and anotations and set it according to the name of the folder.
+1. Download datasets - anotations from [kaggle](https://www.kaggle.com/datasets/phamvoquoclong/automated-retail-checkout-classification) and set it according to the name of the folder.
 2. The structure of file images should look like.
    ```
        data_folder
