@@ -1,8 +1,8 @@
-from tools.process_input import convert_box, rotate_cropped_img
-from tools.process_output import model_pred, get_name_id, plot_bbox
-from dec_predict import get_bbox
-from tools.create_database import create_module
 from PIL import Image
+from tools.process_input import convert_box, rotate_cropped_img
+from tools.process_output import model_pred, get_name_id, plot_bbox, format_lst
+from bbox_id_predict import get_bbox
+from tools.create_database import create_module
 import argparse
 
 
@@ -14,6 +14,7 @@ def inferecne_img(img_path,
     img_width, img_height = img.size
     bbox = get_bbox(img_path)
     predictions = []
+    product_list = []
 
     # Iterate through each line in the label file
     for iter, line in enumerate(bbox):
@@ -39,8 +40,9 @@ def inferecne_img(img_path,
                                 id_class_dict, state=True)
         predictions.append((f'{name_id}_{index_pred}',
                             (left, top, right, bottom)))
+        product_list.append(f'{name_id}_{index_pred}')
 
-    return predictions
+    return product_list, predictions
 
 
 def parse_opt():
@@ -48,7 +50,7 @@ def parse_opt():
     parser.add_argument("--directory_path", type=str,
                         default=r'label_crop_top10')
     parser.add_argument("--img_path", type=str,
-                        default=r'val_level_img\easy\20180824-13-43-21-401.jpg')
+                        default=r'val_level_img\hard\20180910-13-55-39-11.jpg')
     parser.add_argument("--id_class_path", type=str,
                         default=r'map_id.csv')
     opt = parser.parse_args()
@@ -58,8 +60,9 @@ def parse_opt():
 def main(opt):
     embedd_model, database, id_class_dict = create_module(opt.directory_path,
                                                           opt.id_class_path)
-    predictions = inferecne_img(opt.img_path, embedd_model,
-                                id_class_dict, database)
+    proudcts, predictions = inferecne_img(opt.img_path, embedd_model,
+                                          id_class_dict, database)
+    format_lst(proudcts)
     plot_bbox(opt.img_path, predictions)
 
 
