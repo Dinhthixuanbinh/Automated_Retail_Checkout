@@ -55,5 +55,10 @@ For each image:
   ...
   ...
   ```
-
+## Model Evaluation
+Using this code to get accuracy of the model
+```
+python val.py
+python val.py --weight_path weights\best.pt --image E:\Python\Learning\screwdriver\data\project_1-14\train\images\images_90_png.rf.dbc24dd37ffad553d7ccbcdd81aea175.jpg
+```
 
