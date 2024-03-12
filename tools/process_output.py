@@ -1,3 +1,4 @@
+from collections import Counter
 import pandas as pd
 import cv2
 
@@ -51,9 +52,16 @@ def plot_bbox(image_path, predictions,
                       (0, 255, 0), 2)
         # Put label text
         cv2.putText(resized_img, label, (left, top - 5),
-                    cv2.FONT_HERSHEY_SIMPLEX, 0.5, (color, color, color), 2)
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, color, 50+color), 2)
 
     # Display the resized image with bounding boxes
     cv2.imshow('Bounding Boxes', resized_img)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
+
+
+def format_lst(lst):
+    lst = Counter(lst)
+    # Print the counts
+    for element, count in lst.items():
+        print(f"Product {element}: {count}")
