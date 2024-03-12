@@ -1,8 +1,8 @@
-from PIL import Image
 from tools.process_input import convert_box, rotate_cropped_img
 from tools.process_output import model_pred, get_name_id, plot_bbox
 from dec_predict import get_bbox
 from tools.create_database import create_module
+from PIL import Image
 import argparse
 
 
