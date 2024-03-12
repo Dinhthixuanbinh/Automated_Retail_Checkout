@@ -38,26 +38,22 @@ Install build requirements.
                images/      
    ```
 3. The structure of file label should look like.
- ```
+   ```
          label_folder/
-             hinh1.txt/
-                  
+             hinh1.txt/    
    ```
 #### Annotation Format 
 
-*please refer to labelv2.txt for detail*
+*Please refer to hinh1.txt for detail*
 
 For each image:
   ```
-  # <image_path> image_width image_height
-  bbox_x1 bbox_y1 bbox_x2 bbox_y2 (<keypoint,3>*N)
+  # <object_id> x_center y_center height_bbox weight_bbox
   ...
   ...
-  # <image_path> image_width image_height
-  bbox_x1 bbox_y1 bbox_x2 bbox_y2 (<keypoint,3>*N)
+  # <object_id> x_center y_center height_bbox weight_bbox
   ...
   ...
   ```
-Keypoints can be ignored if there is bbox annotation only.
 
 
