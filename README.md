@@ -19,3 +19,45 @@ Evaluation on test data
 | Hard         | EfficientNet-B2  | 512        | 83.50%   |
 | Average      | EfficientNet-B2  | 512        | 84.81%   |
 
+## Installation
+Install build requirements.
+
+ ```
+ pip install -r requirements
+ ```
+## Data preparation
+1. Download datasets and anotations and set it according to the name of the folder.
+2. The structure of file images should look like.
+   ```
+       data_folder
+           easy/
+               images/
+           medium/
+               images/
+           hard/
+               images/      
+   ```
+3. The structure of file label should look like.
+ ```
+         label_folder/
+             hinh1.txt/
+                  
+   ```
+#### Annotation Format 
+
+*please refer to labelv2.txt for detail*
+
+For each image:
+  ```
+  # <image_path> image_width image_height
+  bbox_x1 bbox_y1 bbox_x2 bbox_y2 (<keypoint,3>*N)
+  ...
+  ...
+  # <image_path> image_width image_height
+  bbox_x1 bbox_y1 bbox_x2 bbox_y2 (<keypoint,3>*N)
+  ...
+  ...
+  ```
+Keypoints can be ignored if there is bbox annotation only.
+
+
