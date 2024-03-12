@@ -58,7 +58,8 @@ For each image:
 ## Model Evaluation
 Using this code to get accuracy of the model
 ```
-python val.py
-python val.py --weight_path weights\best.pt --image E:\Python\Learning\screwdriver\data\project_1-14\train\images\images_90_png.rf.dbc24dd37ffad553d7ccbcdd81aea175.jpg
+python val.py --image_folder val_level_img --label_folder labels_val
 ```
-
+## Model Inference
+Please refer to `predict.py` to do inference. The output image may look like.
+![image](https://github.com/Dinhthixuanbinh/Automated_Retail_Checkout/assets/136946649/602b246f-f7b8-477a-a651-bba06230ec26)
