@@ -1,5 +1,5 @@
-import argparse
 from ultralytics import YOLO
+import argparse
 
 
 def combine_tensor(tensor1, tensor2):
