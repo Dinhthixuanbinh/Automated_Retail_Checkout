@@ -1,6 +1,6 @@
 from tools.rotate_img import yoloRotatebbox
-from PIL import Image
 import cv2
+from PIL import Image
 
 
 def rotate_cropped_img(raw_image, label_path, iter, state=True):

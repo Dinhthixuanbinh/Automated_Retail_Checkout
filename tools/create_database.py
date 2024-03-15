@@ -1,8 +1,9 @@
 from tools.get_embedding import Img2Vec
 from PIL import Image
 from tqdm import tqdm
-import pandas as pd
+from ultralytics import YOLO
 import faiss
+import pandas as pd
 import os
 
 
@@ -83,11 +84,18 @@ def get_embedding_size(model,
     return test_img.shape[1]
 
 
-def create_module(directory_path, id_class_path):
-    embedding_model = Img2Vec()
-    dimension = get_embedding_size(embedding_model)
+def create_module(directory_path,
+                  id_class_path,
+                  detector,
+                  dataframe,
+                  state=True):
+    classifier = Img2Vec()
+    dimension = get_embedding_size(classifier)
     database = load_database(directory_path,
                              dimension=dimension,
-                             model=embedding_model)
-    id_class_dict = map_id_class(id_class_path)
-    return embedding_model, database, id_class_dict
+                             model=classifier)
+    class_dict = map_id_class(id_class_path)
+    df = pd.read_csv(dataframe)
+    if state:
+        detector = YOLO(detector)
+    return detector, classifier, database, class_dict, df

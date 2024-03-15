@@ -27,13 +27,16 @@ def model_pred(embedding_model, cropped_img,
     return label_list[indexs[0][0]]
 
 
-def get_name_id(dataframe, number_id):
-    df = pd.read_csv(dataframe)
+def get_name_id(dataframe, number_id, state=True):
+    df = dataframe
+    if state:
+        df = pd.read_csv(dataframe)
     return df[df.index == number_id].class_name.values[0]
 
 
 def plot_bbox(image_path, predictions,
-              target_size=(640, 640)):
+              target_size=(640, 640),
+              state=True):
     img = cv2.imread(image_path)
     resized_img = cv2.resize(img, target_size)
 
@@ -53,11 +56,13 @@ def plot_bbox(image_path, predictions,
         # Put label text
         cv2.putText(resized_img, label, (left, top - 5),
                     cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, color, 50+color), 2)
-
-    # Display the resized image with bounding boxes
-    cv2.imshow('Bounding Boxes', resized_img)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    if state:
+        # Display the resized image with bounding boxes
+        cv2.imshow('Bounding Boxes', resized_img)
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
+    else:
+        return cv2.cvtColor(resized_img, cv2.COLOR_BGR2RGB)
 
 
 def format_lst(lst):
@@ -65,3 +70,9 @@ def format_lst(lst):
     # Print the counts
     for element, count in lst.items():
         print(f"Product {element}: {count}")
+
+
+def get_table(lst):
+    lst = Counter(lst)
+    df = pd.DataFrame(lst.items(), columns=['Item', 'Quantity'])
+    return df.sort_values(by='Quantity', ascending=False)
