@@ -1,9 +1,9 @@
-from PIL import Image
 from tools.create_database import create_module
 from tools.process_output import get_table, plot_bbox
 from predict import inferecne_img
 from ultralytics import YOLO
 import streamlit as st
+from PIL import Image
 import os
 
 
