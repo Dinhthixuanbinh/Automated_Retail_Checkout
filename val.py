@@ -1,10 +1,10 @@
-from tqdm import tqdm
-from PIL import Image
 from tools.process_input import convert_box, rotate_cropped_img
 from tools.process_output import calculate_acc, model_pred
 from tools.create_database import create_module
-import os
+from tqdm import tqdm
+from PIL import Image
 import argparse
+import os
 
 
 def evaluate_data(image_folder,
