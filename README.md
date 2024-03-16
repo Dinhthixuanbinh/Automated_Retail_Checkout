@@ -1,6 +1,5 @@
 ## Introduction
-By having an image and corresponding bounding box. The model will perform slicing of the object and create vector embedding and comparison in the database to recognize the product name.
-
+This is classification module for this dataset [data](https://www.kaggle.com/datasets/diyer22/retail-product-checkout-dataset)
 ## Performance
 Evaluations on val data
 | Method              | Input Size        | Easy  | Medium | Hard  | Average  | 
