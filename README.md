@@ -62,3 +62,7 @@ python val.py --image_folder val_level_img --label_folder labels_val
 ## Model Inference
 Please refer to `predict.py` to do inference. The output image may look like.
 ![image](https://github.com/Dinhthixuanbinh/Automated_Retail_Checkout/assets/136946649/da87a02c-d47b-41dd-8a22-f1b5d1f6155b)
+
+## Web demo
+Please refer to 'app.py' to see model inference on basic web made by streamlit
+![image](https://github.com/Dinhthixuanbinh/Automated_Retail_Checkout/assets/136946649/da87a02c-d47b-41dd-8a22-f1b5d1f6155b)
